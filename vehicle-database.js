@@ -199,4 +199,86 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.addEventListener('input', function() {
         searchVehicles(this.value);
     });
+
+    // -------- AUTHENTICATION LOGIC --------
+    
+    // Auth UI Elements
+    const authContainer = document.getElementById('authContainer');
+    const appContainer = document.getElementById('appContainer');
+    const loginFormContainer = document.getElementById('loginFormContainer');
+    const registerFormContainer = document.getElementById('registerFormContainer');
+    const resetFormContainer = document.getElementById('resetFormContainer');
+    
+    // Auth Display Toggles
+    document.getElementById('showRegister').addEventListener('click', (e) => {
+        e.preventDefault();
+        loginFormContainer.style.display = 'none';
+        registerFormContainer.style.display = 'block';
+    });
+
+    document.getElementById('showReset').addEventListener('click', (e) => {
+        e.preventDefault();
+        loginFormContainer.style.display = 'none';
+        resetFormContainer.style.display = 'block';
+    });
+
+    document.getElementById('showLoginFromRegister').addEventListener('click', (e) => {
+        e.preventDefault();
+        registerFormContainer.style.display = 'none';
+        loginFormContainer.style.display = 'block';
+    });
+
+    document.getElementById('showLoginFromReset').addEventListener('click', (e) => {
+        e.preventDefault();
+        resetFormContainer.style.display = 'none';
+        loginFormContainer.style.display = 'block';
+    });
+
+    // Dummy Auth Action Handlers
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        if (email && password) {
+            // Simulated login success
+            authContainer.style.display = 'none';
+            appContainer.style.display = 'block';
+            document.getElementById('loginForm').reset();
+        } else {
+            alert('Please enter both email and password.');
+        }
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+        if (email && password) {
+            // Simulated registration success
+            alert('Registration successful! Please login.');
+            registerFormContainer.style.display = 'none';
+            loginFormContainer.style.display = 'block';
+            document.getElementById('registerForm').reset();
+        }
+    });
+
+    document.getElementById('resetForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('resetEmail').value;
+        if (email) {
+            // Simulated reset
+            alert('Password reset link sent to ' + email);
+            resetFormContainer.style.display = 'none';
+            loginFormContainer.style.display = 'block';
+            document.getElementById('resetForm').reset();
+        }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        appContainer.style.display = 'none';
+        authContainer.style.display = 'block';
+        loginFormContainer.style.display = 'block';
+        registerFormContainer.style.display = 'none';
+        resetFormContainer.style.display = 'none';
+    });
 });

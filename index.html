@@ -7,50 +7,108 @@
     <link rel="stylesheet" href="vehicle-database.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Vehicle Database</h1>
-        
-        <!-- Search functionality -->
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search for vehicles...">
+    <div class="container" id="mainContainer">
+        <!-- Auth wrapper -->
+        <div id="authContainer" class="form-container">
+            <div id="loginFormContainer">
+                <h2 id="loginHeading">Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email:</label>
+                        <input type="email" id="loginEmail" aria-label="Login Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password:</label>
+                        <input type="password" id="loginPassword" aria-label="Login Password" required>
+                    </div>
+                    <button type="submit" id="loginSubmitBtn" class="auth-submit-btn">Login</button>
+                    <div style="margin-top: 15px; text-align: center;">
+                        <a href="#" id="showRegister" aria-label="Go to Register">Register</a> | <a href="#" id="showReset" aria-label="Go to Password Reset">Forgot Password?</a>
+                    </div>
+                </form>
+            </div>
+
+            <div id="registerFormContainer" style="display: none;">
+                <h2 id="registerHeading">Register</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerEmail">Email:</label>
+                        <input type="email" id="registerEmail" aria-label="Register Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password:</label>
+                        <input type="password" id="registerPassword" aria-label="Register Password" required>
+                    </div>
+                    <button type="submit" id="registerSubmitBtn" class="auth-submit-btn">Register</button>
+                    <div style="margin-top: 15px; text-align: center;">
+                        <a href="#" id="showLoginFromRegister" aria-label="Back to Login from Register">Back to Login</a>
+                    </div>
+                </form>
+            </div>
+
+            <div id="resetFormContainer" style="display: none;">
+                <h2 id="resetHeading">Reset Password</h2>
+                <form id="resetForm">
+                    <div class="form-group">
+                        <label for="resetEmail">Email:</label>
+                        <input type="email" id="resetEmail" aria-label="Reset Password Email" required>
+                    </div>
+                    <button type="submit" id="resetSubmitBtn" class="auth-submit-btn">Reset Password</button>
+                    <div style="margin-top: 15px; text-align: center;">
+                        <a href="#" id="showLoginFromReset" aria-label="Back to Login from Reset">Back to Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="appContainer" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h1 id="appHeading">Vehicle Database</h1>
+                <button id="logoutBtn" class="action-btn" aria-label="Logout" style="background-color: #d9534f; margin-bottom: 30px;">Logout</button>
+            </div>
+            
+            <!-- Search functionality -->
+        <div class="search-container" id="searchContainer">
+            <input type="text" id="searchInput" aria-label="Search Vehicles Input" placeholder="Search for vehicles...">
         </div>
         
-        <table id="vehicleTable">
-            <thead>
+        <table id="vehicleTable" aria-label="Vehicle Table">
+            <thead id="vehicleTableHeader">
                 <tr>
-                    <th>Plate Number</th>
-                    <th>Vehicle Model</th>
-                    <th>Owner Name</th>
-                    <th>Address</th>
+                    <th id="colPlateNumber">Plate Number</th>
+                    <th id="colVehicleModel">Vehicle Model</th>
+                    <th id="colOwnerName">Owner Name</th>
+                    <th id="colOwnerAddress">Address</th>
                 </tr>
             </thead>
-            <tbody id="vehicleList">
+            <tbody id="vehicleList" aria-live="polite">
                 <!-- Vehicle data will be inserted here by JavaScript -->
             </tbody>
         </table>
 
         <!-- Add new vehicle form -->
-        <div class="form-container">
-            <h2>Add New Vehicle</h2>
-            <form id="addVehicleForm">
+        <div class="form-container" id="addVehicleContainer">
+            <h2 id="addVehicleHeading">Add New Vehicle</h2>
+            <form id="addVehicleForm" aria-labelledby="addVehicleHeading">
                 <div class="form-group">
                     <label for="plateNumber">Plate Number:</label>
-                    <input type="text" id="plateNumber" required>
+                    <input type="text" id="plateNumber" aria-label="New Plate Number" required>
                 </div>
                 <div class="form-group">
                     <label for="vehicleModel">Vehicle Model:</label>
-                    <input type="text" id="vehicleModel" required>
+                    <input type="text" id="vehicleModel" aria-label="New Vehicle Model" required>
                 </div>
                 <div class="form-group">
                     <label for="ownerName">Owner Name:</label>
-                    <input type="text" id="ownerName" required>
+                    <input type="text" id="ownerName" aria-label="New Owner Name" required>
                 </div>
                 <div class="form-group">
                     <label for="ownerAddress">Address:</label>
-                    <input type="text" id="ownerAddress" required>
+                    <input type="text" id="ownerAddress" aria-label="New Owner Address" required>
                 </div>
-                <button type="submit" id="submitBtn">Add Vehicle</button>
+                <button type="submit" id="submitBtn" class="action-btn" aria-label="Add Vehicle Button">Add Vehicle</button>
             </form>
+        </div>
         </div>
     </div>
 
