@@ -237,15 +237,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dummy Auth Action Handlers
     document.getElementById('loginForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
-        if (email && password) {
-            // Simulated login success
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value.trim();
+        
+        if (!email || !password) {
+            alert('Error: Please enter both email and password.');
+            return;
+        }
+
+        // Simulated login check
+        if (email === 'admin@admin.com' && password === 'admin123') {
+            alert('Success: Login successful!');
             authContainer.style.display = 'none';
             appContainer.style.display = 'block';
             document.getElementById('loginForm').reset();
         } else {
-            alert('Please enter both email and password.');
+            alert('Error: Invalid email or password. (Hint: use admin@admin.com / admin123)');
         }
     });
 
