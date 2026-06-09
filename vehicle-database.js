@@ -1,6 +1,9 @@
 // Initialize vehicles array
 let vehicles = [];
 let filteredVehicles = [];
+// Hardcoded dummy credentials for testing agents
+const DUMMY_EMAIL = 'test@example.com';
+const DUMMY_PASSWORD = 'password123';
 
 // Function to initialize dummy data into localStorage (temporary function)
 function initializeDummyData() {
@@ -245,14 +248,14 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Simulated login check
-        if (email === 'admin@admin.com' && password === 'admin123') {
+        // Simulated login check against hardcoded dummy credentials
+        if (email === DUMMY_EMAIL && password === DUMMY_PASSWORD) {
             alert('Success: Login successful!');
             authContainer.style.display = 'none';
             appContainer.style.display = 'block';
             document.getElementById('loginForm').reset();
         } else {
-            alert('Error: Invalid email or password. (Hint: use admin@admin.com / admin123)');
+            alert('Error: Invalid email or password.');
         }
     });
 
